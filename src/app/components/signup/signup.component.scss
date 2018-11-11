@@ -6,11 +6,16 @@
   margin: 1rem;
 }
 
-.example-full-width {
+// .example-full-width {
+  
+// }
+
+mat-form-field,  mat-slide-toggle{
+  max-width: 20rem;
+  padding-top: 1rem ;
   width: 100%;
 }
 
-mat-form-field {
-  max-width: 20rem;
-  padding-top: 1rem;
+mat-slide-toggle {
+  padding:1rem 0 3rem;
 }
