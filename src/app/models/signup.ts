@@ -1,6 +1,5 @@
-export interface Signup {
-  usertype: string,
-  username: string,
-  password: string,
-  valPassword: string
+import { Login } from './login';
+
+export interface Signup extends Login {
+  usertype: string
 }
