@@ -1,0 +1,12 @@
+<mat-list>
+    <mat-list-item *ngIf="!authStatus">
+      <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" (click)="onCloseSdnav()" >Login/Register</button>
+    </mat-list-item>
+    <mat-list-item *ngIf="authStatus">
+      <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" (click)="onLogout()" >Logout</button>
+    </mat-list-item>
+    <mat-list-item *ngIf="authStatus" >
+      <button mat-button [routerLink]="['/user']" routerLinkActive="router-link-active" (click)="onCloseSdnav()" >For Employers</button> </mat-list-item>
+    <mat-list-item *ngIf="authStatus">
+      <button mat-button [routerLink]="['/user']" routerLinkActive="router-link-active" (click)="onCloseSdnav()" >For JobSeekers</button> </mat-list-item>
+  </mat-list>

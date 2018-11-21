@@ -1,43 +1,29 @@
-<p>
-  <a href="" [routerLink]="['/test']" routerLinkActive="router-link-active">Test</a>
-</p>
-<app-test [InappProperty]="appProperty.value4['val3'][2].valaval" [app-property]="appProperty.value1" (change)="onChanged($event)" (optionSelect)="onViewMode($event)"
-  (app-change)="onChanged($event)" (toggle)="onToggle()" [(sharedVar)]="viewMode">
-  <div class="ccc">CCCCCCCCCCCCCCCCCCC</div>
-  <div class="bbb">BBBBBBBBBBBBBBBBBBBBBBBB</div>
-  <div class="aaa">AAAAAAAAAAAAAAAA></div>
-  <ng-container class="ddd">DDDDDDDDDDDDDDDDDDD</ng-container>
-</app-test>
+<section fxLayoutAlign="center center" fxLayout="column" ngClass.gt-sm="section-height"> 
+  
+  <div fxLayoutGap="16px" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center"  >
+  <h1 fxFlexAlign="baseline">Search in hundreds tech jobs.</h1>
+  <h3 fxFlexAlign="baseline">Find yours today</h3>
+  </div>
+  
+  <form [formGroup]='searchHomeForm' (ngSubmit)="onSubmit()" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center" fxLayoutGap="32px">
+    <!-- keyword input -->
+    <mat-form-field>
+      <input type="email" matInput placeholder="Job Title, Keywords" formControlName="keyword" autocomplete="email">
+      <mat-error *ngIf="keyword.invalid">{{ getErrorMessage('keyword') }}</mat-error>
+    </mat-form-field>
 
-<!-- hidden attr = elements stays in DOM-->
-<div [hidden]='this.toggle'>
-    <mat-card>ThirdBlock!</mat-card> 
-</div>
-<div [hidden]='!this.toggle'>
- <mat-card>ForthBlock!</mat-card>
-</div>
+    <!-- location input -->
+    <mat-form-field>
+      <input type="email" matInput placeholder="Zip Code, City, State" formControlName="location" autocomplete="email">
+      <mat-error *ngIf="location.invalid">{{ getErrorMessage('location') }}</mat-error>
+    </mat-form-field>
 
-<!-- ngIF directive = element removed form DOM -->
-<span *ngIf="toggle === true; then firstBlock else secondBlock"></span>
-<ng-template #firstBlock>
-    <mat-card>FirstBlock!</mat-card> 
-</ng-template>
-<ng-template #secondBlock>
- <mat-card>SecondBlock!</mat-card> 
-</ng-template>
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" [disabled]="!searchHomeForm.valid">Find Jobs</button>
 
+    <!-- <p>Form Group Status: {{signupForm.status}}</p>
+        <p>isAccepted: {{ isAccepted }}</p>
+        <p>SignupForm Errors: {{ signupForm.errors }}</p>  -->
+  </form>
 
-
-<!-- ngSwitch-->
-<hr>
-<!-- <mat-card [class.active]="viewMode == pepper"><a (click)="viewMode = 'pepper'">PEPPER</a></mat-card>
-<mat-card [class.active]="viewMode == salt" ><a (click)="viewMode = 'salt'">SALT</a></mat-card> -->
-
-<mat-list [ngSwitch]="viewMode">
-  <mat-list-item *ngSwitchCase="'pepper'"> Pepper </mat-list-item>
-  <mat-list-item *ngSwitchCase="'salt'"> Salt </mat-list-item>
-  <mat-list-item *ngSwitchDefault> Paprika </mat-list-item>
- </mat-list>
-
- <!-- <input type="text" [(ngModel)]="viewMode"> -->
- <button (click)="onChangeSelect()">Pepper</button>
+</section>

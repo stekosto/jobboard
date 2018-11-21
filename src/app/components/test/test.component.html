@@ -1,0 +1,42 @@
+<ul>
+  <li *ngFor="let user of users | async">{{ user.email }}</li>
+</ul>
+
+<p>{{ stelios }}</p>
+<p>{{ InappProperty }}</p>
+<p>{{ In2appProperty }}</p>
+
+<button mat-raised-button color="primary" (click)="onClick($event)">Submit</button>
+
+<mat-card>
+  <ng-content select=".bbb"></ng-content>
+</mat-card>
+<mat-card>
+  <ng-content  select=".aaa"></ng-content>
+</mat-card>
+<mat-card>
+    <ng-content select=".ccc"></ng-content>
+</mat-card>
+<mat-card>
+    <ng-content select=".ddd"></ng-content>
+</mat-card>
+
+<button mat-raised-button color="warn" (click)="onToggle()">Submit</button>
+<br>
+<mat-form-field>
+  <mat-select placeholder="Choose wisely">
+    <mat-option *ngFor="let option of options;" [value]="option" (click)="onSelect(option)">
+      {{ option }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select placeholder="Choose wisely" [ngModel]="sharedVar" (ngModelChange)="onChange($event)">
+    <mat-option *ngFor="let option of options;" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<p>You selected: {{ selected }}</p>

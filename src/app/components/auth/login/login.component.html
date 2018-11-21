@@ -1,4 +1,27 @@
-<p>
-  login works!
-</p>
-<p>Don't have an account? <a href="" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign up Here!</a></p>
+<section fxLayoutAlign="center center">
+  <mat-card class="example-form">
+    <form [formGroup]='loginForm' (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center center">
+
+      <!-- username/email -->
+      <mat-form-field>
+        <input type="email" matInput placeholder="Enter an email address" formControlName="username" autocomplete="email">
+        <mat-error *ngIf="username.invalid">{{ getErrorMessage('username') }}</mat-error>
+      </mat-form-field>
+
+      <!-- password -->
+      <mat-form-field>
+        <input type="password" matInput placeholder="Password" formControlName="password" autocomplete="password">
+        <mat-error *ngIf="password.invalid">{{ getErrorMessage('password') }}</mat-error>
+      </mat-form-field>
+
+      <!-- Submit Button -->
+      <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Login</button>
+
+      <!-- <p>Form Group Status: {{signupForm.status}}</p>
+       <p>isAccepted: {{ isAccepted }}</p>
+       <p>SignupForm Errors: {{ signupForm.errors }}</p> -->
+    </form>
+  </mat-card>
+
+</section>
+<p>Don't have an account? <a href="" [routerLink]="['/signup']" routerLinkActive="router-link-active">Register</a></p>

@@ -18,6 +18,9 @@ import { environment } from 'src/environments/environment';
 import { UserComponent } from './components/user/user.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TestComponent } from './components/test/test.component';
+import { HomeTestComponent } from './components/test/home-test/home-test.component';
+import { HeaderComponent } from './components/navigation/header/header.component';
+import { SidenavComponent } from './components/navigation/sidenav/sidenav.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { TestComponent } from './components/test/test.component';
     LoginComponent,
     FooterComponent,
     UserComponent,
-    TestComponent
+    TestComponent,
+    HomeTestComponent,
+    HeaderComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

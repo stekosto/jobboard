@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { Signup } from 'src/app/models/signup';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit, DoCheck {
   signupForm: FormGroup;
   signupFormString: string;
   isAccepted: boolean;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private authService: AuthService) { }
 
   ngOnInit() {
     this.signupForm = this.fb.group({
@@ -25,17 +26,22 @@ export class SignupComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck() {
-    console.log(this.signupForm);
+    // console.log(this.signupForm);
   }
 
   /* Shorthands for form controls (used from within template) */
   get password() { return this.signupForm.get('password'); }
   get valpassword() { return this.signupForm.get('valPassword'); }
 
-  onSubmit({ value, valid }: { value: Signup, valid: boolean }) {
+  onSubmit() {
     if (this.signupForm.valid) {
-      this.signupFormString = JSON.stringify(this.signupForm.value, null, 3);
-      alert(this.signupFormString);
+      this.authService.registerUser({
+        username: this.signupForm.value.username,
+        password: this.signupForm.value.password,
+        usertype: this.signupForm.value.usertype
+      });
+      // this.signupFormString = JSON.stringify(this.signupForm.value, null, 3);
+      // alert(this.signupFormString);
     } else { alert('Please fill this form'); }
   }
 
@@ -46,7 +52,7 @@ export class SignupComponent implements OnInit, DoCheck {
   }
 
   getErrorMessage(controlName) {
-    console.log(controlName);
+    // console.log(controlName);
     if (controlName != null) {
       return this.signupForm.get(controlName).hasError('required') ? 'You must enter a value' :
         this.signupForm.get(controlName).hasError('email') ? 'Not a valid email' :

@@ -1,19 +1,11 @@
-.example-form {
-  // min-width: 10rem;
-  // max-width: 20rem;
-  // width: 100%;
+.example-form { 
   margin-top: 2rem;
-  // margin: 1rem;
   padding: 2rem 3rem;
-  // border: 1px solid gainsboro;
 }
-
-// .example-full-width {
-  
-// }
 
 mat-form-field,  mat-slide-toggle{
   max-width: 20rem;
+  min-width: 15rem;
   padding-top: 1rem ;
   width: 100%;
 }

@@ -1,0 +1,43 @@
+<p>
+    <a href="" [routerLink]="['/test']" routerLinkActive="router-link-active">Test</a>
+  </p>
+  <app-test [InappProperty]="appProperty.value4['val3'][2].valaval" [app-property]="appProperty.value1" (change)="onChanged($event)" (optionSelect)="onViewMode($event)"
+    (app-change)="onChanged($event)" (toggle)="onToggle()" [(sharedVar)]="viewMode">
+    <div class="ccc">CCCCCCCCCCCCCCCCCCC</div>
+    <div class="bbb">BBBBBBBBBBBBBBBBBBBBBBBB</div>
+    <div class="aaa">AAAAAAAAAAAAAAAA></div>
+    <ng-container class="ddd">DDDDDDDDDDDDDDDDDDD</ng-container>
+  </app-test>
+  
+  <!-- hidden attr = elements stays in DOM-->
+  <div [hidden]='this.toggle'>
+      <mat-card>ThirdBlock!</mat-card> 
+  </div>
+  <div [hidden]='!this.toggle'>
+   <mat-card>ForthBlock!</mat-card>
+  </div>
+  
+  <!-- ngIF directive = element removed form DOM -->
+  <span *ngIf="toggle === true; then firstBlock else secondBlock"></span>
+  <ng-template #firstBlock>
+      <mat-card>FirstBlock!</mat-card> 
+  </ng-template>
+  <ng-template #secondBlock>
+   <mat-card>SecondBlock!</mat-card> 
+  </ng-template>
+  
+  
+  
+  <!-- ngSwitch-->
+  <hr>
+  <!-- <mat-card [class.active]="viewMode == pepper"><a (click)="viewMode = 'pepper'">PEPPER</a></mat-card>
+  <mat-card [class.active]="viewMode == salt" ><a (click)="viewMode = 'salt'">SALT</a></mat-card> -->
+  
+  <mat-list [ngSwitch]="viewMode">
+    <mat-list-item *ngSwitchCase="'pepper'"> Pepper </mat-list-item>
+    <mat-list-item *ngSwitchCase="'salt'"> Salt </mat-list-item>
+    <mat-list-item *ngSwitchDefault> Paprika </mat-list-item>
+   </mat-list>
+  
+   <!-- <input type="text" [(ngModel)]="viewMode"> -->
+   <button (click)="onChangeSelect()">Pepper</button>
