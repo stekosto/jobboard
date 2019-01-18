@@ -8,4 +8,6 @@ The goal is to use NgRx libraries for reactive state management.
 
 A live demo of the project can be found at https://stekosto.github.io/jobboard
 
-Some screenshots:
+user: demo@demo.com / pass demodemo
+
+## Some screenshots:
