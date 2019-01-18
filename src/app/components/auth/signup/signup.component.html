@@ -4,11 +4,11 @@
      
       <!-- Select a role js/jg -->
       <mat-form-field>
-        <mat-select placeholder="What you want to do?" formControlName="usertype">
-          <mat-option value="option">I want to find a job/post my resume</mat-option>
-          <mat-option value="option">I want to hire a tech/post a job</mat-option>
+        <mat-select placeholder="What you want to do?" formControlName="userType">
+          <mat-option value="jobseeker">I want to find a job/post my resume</mat-option>
+          <mat-option value="jobgiver">I want to hire a tech/post a job</mat-option>
         </mat-select>
-        <mat-error *ngIf="signupForm.invalid">{{ getErrorMessage('usertype') }}</mat-error>
+        <mat-error *ngIf="signupForm.get('userType').invalid">{{ getErrorMessage('userType') }}</mat-error>
       </mat-form-field>
   
       <!-- username/email -->
@@ -46,5 +46,4 @@
       <p>isAccepted: {{ isAccepted }}</p>
       <p>SignupForm Errors: {{ signupForm.errors }}</p> -->
      </form></mat-card>
- 
 </section>

@@ -1,20 +1,49 @@
-<table mat-table [dataSource]='dataSource'>
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let user"> {{user.id}} </td>
-  </ng-container>
-  <ng-container matColumnDef="firstName">
-    <th mat-header-cell *matHeaderCellDef>First Name</th>
-    <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
-  </ng-container>
-  <ng-container matColumnDef="lastName">
-    <th mat-header-cell *matHeaderCellDef>Last Name </th>
-    <td mat-cell *matCellDef="let user"> {{ user.lastName}} </td>
-  </ng-container>
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let user"> {{user.email}} </td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" class="sidenav-user" opened>
+      <mat-list>
+          <mat-list-item>
+            <button mat-button>Profile</button>
+          </mat-list-item>
+          <mat-list-item>
+            <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">Jobs</button>
+          </mat-list-item>
+          <mat-list-item  >
+            <button mat-button [routerLink]="['/user']" routerLinkActive="router-link-active">Alerts</button> 
+          </mat-list-item>
+          <mat-list-item >
+            <button mat-button [routerLink]="['/user']" routerLinkActive="router-link-active">Settings</button> 
+          </mat-list-item>
+        </mat-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <table mat-table [dataSource]='dataSource'>
+      <ng-container matColumnDef="userId">
+        <th mat-header-cell *matHeaderCellDef>User ID</th>
+        <td mat-cell *matCellDef="let user"> {{user.userId}} </td>
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Usrname</th>
+        <td mat-cell *matCellDef="let user"> {{user.username}} </td>
+      </ng-container>
+      <ng-container matColumnDef="userType">
+          <th mat-header-cell *matHeaderCellDef>User Type</th>
+          <td mat-cell *matCellDef="let user"> {{user.userType}} </td>
+        </ng-container>
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef>First Name</th>
+        <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef>Last Name </th>
+        <td mat-cell *matCellDef="let user"> {{ user.lastName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-sidenav-content>
+</mat-sidenav-container>

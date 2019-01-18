@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit, DoCheck {
 
   ngOnInit() {
     this.signupForm = this.fb.group({
-      'usertype': ['', [Validators.required]],
+      'userType': [null, [Validators.required]],
       'username': ['', [Validators.required, Validators.email]],
       'password': ['', [Validators.required, Validators.minLength(6)]],
       'valPassword': ['', [Validators.required]],
@@ -32,14 +32,16 @@ export class SignupComponent implements OnInit, DoCheck {
   /* Shorthands for form controls (used from within template) */
   get password() { return this.signupForm.get('password'); }
   get valpassword() { return this.signupForm.get('valPassword'); }
+  get userType() { return this.signupForm.get('userType'); }
 
   onSubmit() {
     if (this.signupForm.valid) {
       this.authService.registerUser({
         username: this.signupForm.value.username,
         password: this.signupForm.value.password,
-        usertype: this.signupForm.value.usertype
+        userType: this.signupForm.value.userType
       });
+      console.log('dfa', this.userType.value);
       // this.signupFormString = JSON.stringify(this.signupForm.value, null, 3);
       // alert(this.signupFormString);
     } else { alert('Please fill this form'); }
@@ -61,7 +63,7 @@ export class SignupComponent implements OnInit, DoCheck {
     }
   }
 
-  getPasswordLength(controlName) {
+  getPasswordLength(controlName) { 
     if (this.signupForm.get(controlName).value !== null) {
       return this.signupForm.get(controlName).value.length;
     } else { return 0; }

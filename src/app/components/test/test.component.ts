@@ -35,11 +35,12 @@ export class TestComponent implements OnInit {
     this.users = this.userService.getListUsers();
     // console.log(this.users);
     this.stelios = 'goodBoy';
-    console.log(this.selected);
+    // console.log(this.selected);
   this.goodBoy = (this.stelios as string);
   this.optionSelect.emit(this.selected);
 
   // console.log(this.InappProperty);
+  // this.simpleFunction();
   }
 
   onClick (event) {
@@ -59,10 +60,9 @@ export class TestComponent implements OnInit {
   }
 
   onChange (event) {
-    console.log('onChange', event);
+    // console.log('onChange', event);
     this.sharedVar = event;
     this.sharedVarChange.emit(event);
   }
-
 
 }

@@ -1,9 +1,9 @@
 <mat-toolbar color="primary" fxLayoutAlign="start stretch" fxLayout="row">
-    <button mat-button (click)="toggleSdnav()" fxHide.gt-lg>
+    <button mat-button (click)="toggleSdnav()" fxHide.gt-sm>
       <mat-icon>menu</mat-icon>
     </button>
     <button mat-button [routerLink]="['/']" routerLinkActive="router-link-active">Job Board</button>
-    <div fxLayout="row" fxFlex fxLayoutAlign="end" fxLayoutGap.lt-md="0" fxHide.lt-sm>
+    <div fxLayout="row" fxFlex fxLayoutAlign="end" fxLayoutGap.lt-md="0" fxHide.lt-md>
       <button *ngIf="!authStatus" mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">Login/Register</button>
       <button *ngIf="authStatus" mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" (click)="logout()">Logout</button>
       <button *ngIf="authStatus" mat-button [routerLink]="['user']" routerLinkActive="router-link-active">For Employers</button>
@@ -13,5 +13,6 @@
         <button mat-menu-item>Item 1</button>
         <button mat-menu-item>Item 2</button>
       </mat-menu>
+     
     </div>
   </mat-toolbar>
